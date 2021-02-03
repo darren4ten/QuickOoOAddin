@@ -1,0 +1,15 @@
+﻿Add-Type -assembly "Microsoft.Office.Interop.Outlook"
+$Outlook = New-Object -comobject Outlook.Application
+$Meeting = $Outlook.CreateItem('olAppointmentItem')
+$Meeting.AllDayEvent = $true
+$Meeting.BusyStatus = [Microsoft.Office.Interop.Outlook.OlBusyStatus].olFree
+$Meeting.Subject = [string]::Format(“{0} OOO {1}”,[System.Environment]::UserName,[System.DateTime]::Today.ToString("MM/dd"))
+$Meeting.ReminderSet = $false
+$recip = $Meeting.Recipients.Add("test@test.com")
+$recip.Resolve()
+$recip.Type = 1
+$Meeting.ResponseRequested = $false
+$Meeting.Start = [System.DateTime]::Today
+$Meeting.MeetingStatus = 1
+$Meeting.Location = "Shanghai"
+$Meeting.Display()

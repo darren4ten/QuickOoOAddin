@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OoOAddin" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="txtSubject_OoO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$name$'s OoO</Value>
+    </Setting>
+    <Setting Name="txtReceivers_OoO" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="txtBody_OoO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">I am OoO.</Value>
+    </Setting>
+    <Setting Name="txtSubject_WFH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$name$'s WFH</Value>
+    </Setting>
+    <Setting Name="txtReceivers_WFH" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="txtBody_WFH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">I am WFH.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

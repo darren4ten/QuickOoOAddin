@@ -20,5 +20,11 @@
     <Setting Name="txtBody_WFH" Type="System.String" Scope="User">
       <Value Profile="(Default)">I am WFH.</Value>
     </Setting>
+    <Setting Name="txtReceiversRequired_OoO" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="txtReceiversRequired_WFH" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

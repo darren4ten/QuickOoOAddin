@@ -94,5 +94,29 @@ namespace OoOAddin {
                 this["txtBody_WFH"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string txtReceiversRequired_OoO {
+            get {
+                return ((string)(this["txtReceiversRequired_OoO"]));
+            }
+            set {
+                this["txtReceiversRequired_OoO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string txtReceiversRequired_WFH {
+            get {
+                return ((string)(this["txtReceiversRequired_WFH"]));
+            }
+            set {
+                this["txtReceiversRequired_WFH"] = value;
+            }
+        }
     }
 }

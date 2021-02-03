@@ -141,14 +141,14 @@ namespace OoOAddin
             {
                 agendaMeeting.Subject = GetHandledSubject(Settings1.Default.txtSubject_OoO, user.Name);
                 //agendaMeeting.Body = Settings1.Default.txtBody_OoO;
-                SetupRecipients(agendaMeeting.Recipients, Settings1.Default.txtReceivers_OoO);
+                SetupRecipients(agendaMeeting.Recipients, Settings1.Default.txtReceivers_OoO, Settings1.Default.txtReceiversRequired_OoO);
                 SetupBody(agendaMeeting, Settings1.Default.txtBody_OoO);
             }
             else
             {
                 agendaMeeting.Subject = GetHandledSubject(Settings1.Default.txtSubject_WFH, user.Name);
                 //agendaMeeting.Body = Settings1.Default.txtBody_WFH;
-                SetupRecipients(agendaMeeting.Recipients, Settings1.Default.txtReceivers_WFH);
+                SetupRecipients(agendaMeeting.Recipients, Settings1.Default.txtReceivers_WFH, Settings1.Default.txtReceiversRequired_WFH);
                 SetupBody(agendaMeeting, Settings1.Default.txtBody_WFH);
             }
 
@@ -167,8 +167,13 @@ namespace OoOAddin
             agendaMeeting.Body = body;
         }
 
-        private void SetupRecipients(Outlook.Recipients recipients, string recipientStr)
+        private void SetupRecipients(Outlook.Recipients recipients, string recipientStr, string recipientRequiredStr)
         {
+            if (string.IsNullOrEmpty(recipientStr) && string.IsNullOrEmpty(recipientRequiredStr))
+            {
+                return;
+            }
+
             GetHandledRecipients(recipientStr)?.ForEach(r =>
             {
                 Outlook.Recipient recipient =
@@ -176,11 +181,20 @@ namespace OoOAddin
                 recipient.Type =
                     (int)Outlook.OlMeetingRecipientType.olOptional;
             });
+            GetHandledRecipients(recipientRequiredStr)?.ForEach(r =>
+            {
+                Outlook.Recipient recipient =
+                    recipients.Add(r);
+                recipient.Type =
+                    (int)Outlook.OlMeetingRecipientType.olRequired;
+            });
         }
 
         private List<string> GetHandledRecipients(string recipients)
         {
-            return recipients.Split(';').ToList();
+            var list = recipients.Split(';').ToList();
+            list.RemoveAll(p => string.IsNullOrEmpty(p));
+            return list;
         }
 
         private string GetHandledSubject(string subject, string userName)

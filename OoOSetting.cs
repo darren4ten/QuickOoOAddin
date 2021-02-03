@@ -24,7 +24,7 @@ namespace OoOAddin
         public void SetPanel(Microsoft.Office.Interop.Outlook.Application application, CustomTaskPane pane)
         {
             _pane = pane;
-            _pane.Width = 400;
+            _pane.Width = 500;
             _app = application;
 
             LoadControl();
@@ -34,9 +34,11 @@ namespace OoOAddin
         {
             txtSubject_OoO.Text = Settings1.Default.txtSubject_OoO;
             txtReceivers_OoO.Text = Settings1.Default.txtReceivers_OoO;
+            txtReceiversRequired_OoO.Text = Settings1.Default.txtReceiversRequired_OoO;
             txtBody_OoO.Text = Settings1.Default.txtBody_OoO;
             txtSubject_WFH.Text = Settings1.Default.txtSubject_WFH;
             txtReceivers_WFH.Text = Settings1.Default.txtReceivers_WFH;
+            txtReceiversRequired_WFH.Text = Settings1.Default.txtReceiversRequired_WFH;
             txtBody_WFH.Text = Settings1.Default.txtBody_WFH;
         }
 
@@ -51,6 +53,8 @@ namespace OoOAddin
                 Settings1.Default.txtSubject_WFH = txtSubject_WFH.Text;
                 Settings1.Default.txtReceivers_WFH = txtReceivers_WFH.Text;
                 Settings1.Default.txtBody_WFH = txtBody_WFH.Text;
+                Settings1.Default.txtReceiversRequired_OoO = txtReceiversRequired_OoO.Text;
+                Settings1.Default.txtReceiversRequired_WFH = txtReceiversRequired_WFH.Text;
                 Settings1.Default.Save();
                 lblSaveResult.Text = "Save success!";
                 lblSaveResult.ForeColor = Color.MediumSeaGreen;
@@ -70,6 +74,11 @@ namespace OoOAddin
         private void button1_Click(object sender, EventArgs e)
         {
             _pane.Visible = false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
